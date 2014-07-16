@@ -16,7 +16,7 @@
 
 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
 		<route>
-			<from uri="ftp://192.168.38.144/ftp?username=frank&amp;password=password" />
+			<from uri="ftp://192.168.38.144/ftp?username=frank&amp;password=password&amp;idempotent=true" />
 			<process ref="consoleLogProcessor"/>
 			<to uri="jms:queue:simpleTopic" />
 		</route>

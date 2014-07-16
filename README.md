@@ -16,4 +16,5 @@ This list is by no means final
 Running
 -------
 1. Install mvn and git and obtain the code
-2. run mvn clean install camel:run
+2. Make sure activemq is running
+3. run mvn clean install camel:run
