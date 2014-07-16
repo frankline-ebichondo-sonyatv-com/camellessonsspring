@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemalocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 	
 	<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
@@ -14,12 +14,12 @@
 	<bean id="consoleLogProcessor" class="com.sonyatv.camel.processors.ConsoleLogProcessor">
 	</bean>
 
-	<camelcontext id="camel" xmlns="http://camel.apache.org/schema/spring">
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
 		<route>
-			<from uri="ftp://192.168.38.144/ftp?username=frank&password=password" />
+			<from uri="ftp://192.168.38.144/ftp?username=frank&amp;password=password" />
 			<process ref="consoleLogProcessor"/>
 			<to uri="jms:queue:simpleTopic" />
 		</route>
-	</camelcontext>
+	</camelContext>
 	
 </beans>

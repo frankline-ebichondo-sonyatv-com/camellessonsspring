@@ -12,3 +12,8 @@ So apparently:
 3. Any bean can be a processor, you only need to specify the class and the method to do your processing : Not proven
 
 This list is by no means final
+
+Running
+-------
+1. Install mvn and git and obtain the code
+2. run mvn clean install camel:run
