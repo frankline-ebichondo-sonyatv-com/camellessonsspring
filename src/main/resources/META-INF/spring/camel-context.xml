@@ -13,10 +13,23 @@
 	
 	<bean id="consoleLogProcessor" class="com.sonyatv.camel.processors.ConsoleLogProcessor">
 	</bean>
-
+	
+	<bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+		<property name="location" value="classpath:config.properties"></property>
+	</bean>
+	
+	<!-- <bean id="sourceFTP" class="">
+		<property name="host" value="${ftp.host}"/>
+	    <property name="port" value="22"/>
+	    <property name="username" value="${ftp.username}"/>
+	    <property name="password" value="${ftp.password}"/>
+		 uri="ftp://${ftp.host}/ftp?username=${ftp.username}&amp;password=${ftp.password}&amp;idempotent=true"
+	</bean> -->
+	
+	
 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
 		<route>
-			<from uri="ftp://192.168.38.144/ftp?username=frank&amp;password=password&amp;idempotent=true" />
+			<from uri="ftp://{{ftp.host}}/ftp?username={{ftp.username}}&amp;password={{ftp.password}}&amp;idempotent=true"/>
 			<process ref="consoleLogProcessor"/>
 			<to uri="jms:queue:simpleTopic" />
 		</route>
