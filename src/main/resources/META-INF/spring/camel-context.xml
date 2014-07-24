@@ -14,6 +14,9 @@
 	<bean id="consoleLogProcessor" class="com.sonyatv.camel.processors.ConsoleLogProcessor">
 	</bean>
 	
+	<bean id="addHelloProcessor" class="com.sonyatv.camel.processors.AddHelloWorldProcessor">
+	</bean>
+	
 	<bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
 		<property name="location" value="classpath:config.properties"></property>
 	</bean>
@@ -31,6 +34,7 @@
 		<route>
 			<from uri="ftp://{{ftp.host}}/ftp?username={{ftp.username}}&amp;password={{ftp.password}}&amp;idempotent=true"/>
 			<process ref="consoleLogProcessor"/>
+			<process ref="addHelloProcessor"/>
 			<to uri="jms:queue:simpleTopic" />
 		</route>
 	</camelContext>

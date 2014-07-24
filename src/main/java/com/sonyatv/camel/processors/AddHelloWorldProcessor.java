@@ -7,9 +7,12 @@ import org.slf4j.LoggerFactory;
 
 public class AddHelloWorldProcessor implements Processor{
 
-	static Logger logger = LoggerFactory.getLogger(AddHelloWorldProcessor.class);
+	
+	
 	public void process(Exchange exchange) throws Exception {
+		Logger logger = LoggerFactory.getLogger(AddHelloWorldProcessor.class);
 		String simple = exchange.getIn().getBody(String.class);
+		System.out.println("Withins add helloworld processor");
 		logger.info("simple: " + simple);
 		
 	}
