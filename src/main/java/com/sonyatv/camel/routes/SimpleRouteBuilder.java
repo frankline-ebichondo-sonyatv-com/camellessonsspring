@@ -5,7 +5,7 @@ import java.util.Properties;
 
 import org.apache.camel.builder.RouteBuilder;
 
-import com.sonyatv.camel.processors.ConsoleLogProcessor;
+import com.sonyatv.camel.processors.AddHelloWorldProcessor;
 
 public class SimpleRouteBuilder extends RouteBuilder{
 
@@ -16,6 +16,7 @@ public class SimpleRouteBuilder extends RouteBuilder{
 		InputStream is = SimpleRouteBuilder.class.getClassLoader().getResourceAsStream("config.properties");
 		prop.load(is);
 		from("ftp://" + prop.getProperty("host") + "/ftp?username=" + prop.getProperty("username") + "&password=" + prop.getProperty("password"))
+		.process(new AddHelloWorldProcessor())
 		.to("jms:queue:simpleTopic");
 	}
 
