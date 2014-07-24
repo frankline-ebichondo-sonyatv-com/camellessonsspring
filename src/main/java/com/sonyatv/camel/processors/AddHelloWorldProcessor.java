@@ -13,6 +13,8 @@ public class AddHelloWorldProcessor implements Processor{
 		Logger logger = LoggerFactory.getLogger(AddHelloWorldProcessor.class);
 		String simple = exchange.getIn().getBody(String.class);
 		System.out.println("Withins add helloworld processor");
+		System.out.println("simple: " + simple);
+		exchange.getIn().setBody("Hello world: " + simple);
 		logger.info("simple: " + simple);
 		
 	}
